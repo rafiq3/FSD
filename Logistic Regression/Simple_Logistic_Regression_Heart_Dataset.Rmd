@@ -1,0 +1,35 @@
+---
+title: "Simple Logistic Regression Heart Dataset"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r}
+library(readr)
+heart <- read_csv("heart.csv")
+```
+
+```{r}
+head(heart)
+```
+
+```{r}
+data1 <- subset(heart, select = c(sex, exang, oldpeak))
+data1
+```
+
+```{r}
+model_fit <- glm(formula = exang~oldpeak, data = heart, family = binomial)
+summary(model_fit)
+```
+
+```{r}
+library(ggplot2)
+```
+
+```{r}
+ggplot(data1, aes(x=oldpeak, y=exang)) + geom_point() + 
+  stat_smooth(method = "glm", method.args = list(family="binomial"), se = FALSE)
+```
+

@@ -1,0 +1,34 @@
+---
+title: "Multiple Logistic Regression Heart Dataset"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r}
+library(readr)
+heart <- read_csv("heart.csv")
+```
+
+```{r}
+head(heart)
+```
+
+```{r}
+data1 <- subset(heart, select = c(sex, exang, oldpeak))
+data1
+```
+
+```{r}
+model_fit2 <- glm(formula = exang~oldpeak+sex, data = heart, family = binomial)
+summary(model_fit2)
+```
+
+```{r}
+library(predict3d)
+```
+
+```{r}
+ggPredict(model_fit2)
+```
+

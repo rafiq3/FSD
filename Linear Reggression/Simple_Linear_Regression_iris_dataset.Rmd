@@ -1,0 +1,33 @@
+---
+title: "Simple Linear Regression Iris Dataset"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r}
+attach(iris)
+str(iris)
+```
+```{r}
+head(iris)
+```
+```{r}
+newdata <- subset(iris, select = c(Sepal.Length, Petal.Length))
+newdata
+```
+```{r}
+fit_model <- lm(Sepal.Length~Petal.Length, data = iris)
+summary(fit_model)
+```
+```{r}
+library(predict3d)
+```
+```{r}
+ggPredict(fit_model)
+```
+```{r}
+ggPredict(fit_model, xpos = 0.75, vjust = 1.5, show.error = TRUE)
+```
+
+

@@ -1,0 +1,26 @@
+---
+title: "Naive Bayes PimaIndiansDiabetes Dataset"
+output:
+  html_notebook: default
+  html_document:
+    df_print: paged
+---
+
+```{r}
+library(mlbench)
+data("PimaIndiansDiabetes")
+```
+
+```{r}
+head(PimaIndiansDiabetes)
+```
+
+```{r}
+library(naivebayes)
+```
+
+```{r}
+model_fit <- naive_bayes(diabetes~., data = PimaIndiansDiabetes)
+model_fit
+```
+

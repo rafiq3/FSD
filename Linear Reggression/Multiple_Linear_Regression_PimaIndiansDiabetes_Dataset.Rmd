@@ -1,0 +1,37 @@
+---
+title: "Multiple Linear Regression Pima Indians Diabetes Dataset"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r}
+library("mlbench")
+```
+
+```{r}
+data("PimaIndiansDiabetes")
+```
+
+```{r}
+head(PimaIndiansDiabetes)
+```
+
+```{r}
+PimaIndiansDiabetes$diabetes = ifelse(PimaIndiansDiabetes$insulin==0, "pos","neg")
+model_data <- lm(mass~pedigree+diabetes, data = PimaIndiansDiabetes)
+summary(model_data)
+```
+
+```{r}
+library(predict3d)
+```
+
+```{r}
+ggPredict(model_data)
+```
+
+```{r}
+ggPredict(model_data, show.error = TRUE, facet.modx = TRUE, show.text = FALSE)
+```
+
